@@ -2,7 +2,8 @@
     values = {
         "/usr/bin/g++",
         {
-            "-m64"
+            "-m64",
+            "-no-pie"
         }
     },
     files = {

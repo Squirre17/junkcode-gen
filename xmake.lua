@@ -3,6 +3,7 @@ add_rules("mode.debug", "mode.release")
 target("jz-jnz")
     set_kind("binary")
     add_cxflags("-no-pie")
+    add_ldflags("-no-pie")
     add_cxflags("-g")
     add_files("src/jz-jnz.c")
 
