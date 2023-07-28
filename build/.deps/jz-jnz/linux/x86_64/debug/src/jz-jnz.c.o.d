@@ -1,4 +1,6 @@
 {
+    depfiles_gcc = "jz-jnz.o: src/jz-jnz.c\
+",
     values = {
         "/usr/bin/gcc",
         {
@@ -9,7 +11,5 @@
     },
     files = {
         "src/jz-jnz.c"
-    },
-    depfiles_gcc = "jz-jnz.o: src/jz-jnz.c\
-"
+    }
 }

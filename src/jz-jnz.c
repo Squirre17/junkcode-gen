@@ -22,9 +22,25 @@ int add_with_junk(int a, int b){
     return c;
 }
 
+int add_with_junk2(int a, int b){
+    int c = 0;
+    asm(
+        "je label2;"
+        "jne label2;"
+        ".byte 0xe8;"    // call 指令，后面加4bytes的地址偏移，因此导致反汇编器不能正常识别
+        "    label2:"
+    );
+    c = a + b;
+    return c;
+}
+
 #include <stdio.h>
 int main(int argc, char const *argv[])
 {
-    printf("%d %d\n", add(1, 2), add_with_junk(1, 2));
+    printf("%d %d %d\n", 
+        add(1, 2), 
+        add_with_junk(1, 2),
+        add_with_junk2(1, 2)
+    );
     return 0;
 }
