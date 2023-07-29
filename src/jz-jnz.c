@@ -34,13 +34,29 @@ int add_with_junk2(int a, int b){
     return c;
 }
 
+int add_with_junk_xorjz(int a, int b){
+    int c = 0;
+    asm(
+        ".intel_syntax noprefix;"
+        "xor eax, eax;"
+        "jz label3;"
+        ".byte 0xe8;"    // call 指令
+        ".byte 0x0d, 0x00, 0x07, 0x21, 0xff;"
+        "    label3:"
+        ".att_syntax"
+    );
+    c = a + b;
+    return c;
+}
+
 #include <stdio.h>
 int main(int argc, char const *argv[])
 {
-    printf("%d %d %d\n", 
-        add(1, 2), 
-        add_with_junk(1, 2),
-        add_with_junk2(1, 2)
+    printf("%d\n", 
+        add(1, 2) + 
+        add_with_junk(1, 2) +
+        add_with_junk2(1, 2) +
+        add_with_junk_xorjz(3, 4)
     );
     return 0;
 }

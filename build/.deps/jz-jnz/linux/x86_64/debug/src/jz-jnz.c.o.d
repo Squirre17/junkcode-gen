@@ -1,4 +1,7 @@
 {
+    files = {
+        "src/jz-jnz.c"
+    },
     depfiles_gcc = "jz-jnz.o: src/jz-jnz.c\
 ",
     values = {
@@ -9,8 +12,5 @@
             "-no-pie",
             "-g"
         }
-    },
-    files = {
-        "src/jz-jnz.c"
     }
 }
